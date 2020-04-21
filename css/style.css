@@ -1,3 +1,6 @@
+body{
+    margin:0;
+}
 *,
 *::before,
 *::after {
@@ -59,22 +62,76 @@ nav div{
             z-index:-1;
             top:0;
             left:0;
+            overflow:hidden;
         }
-        ul{
-            margin: 0;
-            padding:0;
-            height:100%;
-        }
-        li{
-            display: block;
-            position: absolute;
-            width:100%;
-            height:100%;
-            list-style-type:none;
-            background-position: center;
-            background-size: cover;
-            background-color:#a7c5e4;
-        }
+            #background-slider ul {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                position: relative;
+                transition: none;
+                left: -100vw;
+            }
+    #background-slider ul.activeleft {
+        left: 0vw;
+        transition: left 1s ease-in-out;
+    }
+    #background-slider ul.activeright {
+        left: -200vw;
+        transition: left 1s ease-in-out;
+    }
+#background-slider li {
+    display: block;
+    float: left;
+    width: 100vw;
+    height: 100%;
+    list-style-type: none;
+    background-position: center;
+    background-size: cover;
+    background-color: #a7c5e4;
+}
+.sliderButton {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    margin-top: -100px;
+    background-color: #ffffff00;
+    border-radius: 50%;
+    font-family: monospace;
+    color: grey;
+    transition: background-color,color .3s ease-in-out;
+    font-size: 0.5em;
+    cursor:pointer;
+}
+    .sliderButton:hover {
+        background-color: #ffffff30;
+        color: white;
+    }
+    .sliderButton#slideLeft {
+        left: 5vw;
+    }
+            .sliderButton#slideRight {
+                right: 5vw;
+            }
+    .sliderButton#slideLeft:after {
+        content: "<";
+        text-align: center;
+        display: block;
+        font-size: 50px;
+        line-height: 50px;
+        margin-left: -5px;
+    }
+
+    .sliderButton#slideRight:after {
+        content: ">";
+        text-align: center;
+        display: block;
+        font-size: 50px;
+        line-height: 50px;
+        margin-left: 5px;
+    }
+
 footer{
     background-color:#131313;
     color:grey;
