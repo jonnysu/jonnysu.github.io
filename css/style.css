@@ -14,14 +14,16 @@ nav {
     color: white;
     justify-content: center;
 }
-nav div{
-    padding:2em;
-    display:block;
-    position:relative;
-    display:flex;
-    text-align:center;
-    overflow:hidden;
-}
+    nav div {
+        padding: 2em 0.5em;
+        display: block;
+        position: relative;
+        display: flex;
+        text-align: center;
+        overflow: hidden;
+        flex: auto;
+        justify-content: center;
+    }
     nav div::after {
         content: " ";
         position: absolute;
@@ -30,16 +32,18 @@ nav div{
         height: 100%;
         left: 0;
         top: 0;
+        opacity:0;
         /*background-color: rgba(206, 206, 206, 0.15);*/
         background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.25));
         transition: all 0.2s cubic-bezier(.68,-0.55,.27,1.55);
     }
     nav div:hover::after {
         transform: translateY(0);
+        opacity:1;
     }
     nav div:hover {
         color:#095eb7 ;
-        transform:scale(1.1);
+        transform:scaleY(1.1);
         transition: all 0.2s cubic-bezier(.68,-0.55,.27,1.55);
     }
 
@@ -92,7 +96,7 @@ nav div{
                 width: 100%;
                 height: 100%;
                 background-position: center;
-                background-size: 100%;
+                background-size: cover;
                 background-color: #a7c5e4;
                 animation: backgroundAnimation 25s ease-in-out infinite alternate
             }
