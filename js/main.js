@@ -1,3 +1,4 @@
+//created by jonnySu
 //调整网站home的高低
 (function (window) {
     var utility = {};
@@ -28,43 +29,75 @@
     })
 
 })(window);
+
+
+//window.requestAnimFrame = (function () {
+//    return window.requestAnimationFrame ||
+//        window.webkitRequestAnimationFrame ||
+//        window.mozRequestAnimationFrame ||
+//        window.oRequestAnimationFrame ||
+//        window.msRequestAnimationFrame ||
+//        function (/* function */ callback, /* DOMElement */ element) {
+//            window.setTimeout(callback, 1000 / 60);
+//        };
+//})();
+//function animate() {
+//    requestAnimFrame(animate);
+//    draw();
+
+//}
+
+
+
 //新鞋一个多功能slider 逐渐添加中
-
-
 (function (window) {
-    var slider = function () {
+    var slider = function (ElementInfo) {
         
-        //this.elapsedTime = 0;
+        this.timeout = ElementInfo.timeout|| 5000;
+
+        this.leftButton = window.document.getElementById(ElementInfo.slideLeft);
+        this.rightButton = window.document.getElementById(ElementInfo.slideRight);
+        this.slideWrapper = window.document.getElementById(ElementInfo.backgroundSlider).getElementsByTagName("ul");
+       
         this.init();
     }
     slider.prototype.init = function () {
-
-        this.leftButton = window.document.getElementById('slideLeft');
-        this.rightButton = window.document.getElementById('slideRight');
-        this.slideWrapper = window.document.getElementById('background-slider').getElementsByTagName("ul");
         this.slideTime = this.slideWrapper[0].style.transitionDuration;
         this.slideElements = this.slideWrapper[0].children;
         this.length = this.slideElements.length;
         this.slideWrapper[0].style.width = 100 * this.length + "vw";
-        if (this.length == 1) { return; }
+        //一张的特殊情况
+        if (this.length == 1) {
+            this.slideWrapper[0].style.left = 0;
+            return;
+        }
+        //两张的特殊情况
         if (this.length == 2) {
-            this.slideWrapper[0].appendChild(this.slideWrapper[0].firstElementChild.cloneNode(true));
-            this.slideWrapper[0].style.width = 100 * 3 + "vw";
+            this.slideWrapper[0].appendChild(this.slideWrapper[0].firstElementChild.cloneNode(true)); 
+            this.slideWrapper[0].appendChild(this.slideWrapper[0].firstElementChild.nextElementSibling.cloneNode(true));
+            this.slideWrapper[0].style.width = 100 * 4 + "vw";
         }
         this.leftButton.addEventListener("click", leftClickCallback(this.slideWrapper[0], this));
         this.rightButton.addEventListener("click", rightClickCallback(this.slideWrapper[0], this));
         
         this.slideWrapper[0].addEventListener("transitionend", myevent(this.slideWrapper[0]));
-
-
+        //设置时间间隔
+        this.intervalProcess = setInterval(rightClickCallback(this.slideWrapper[0], this), this.timeout);
     }
     var leftClickCallback = function (wrapper,slider) {
         return function () {
+            //重设时间间隔
+            clearInterval(slider.intervalProcess);
+            slider.intervalProcess = setInterval(rightClickCallback(wrapper, slider), slider.timeout);
+            //翻页开始动作
             adjustLeft(wrapper,slider);
         }
     }
     var rightClickCallback = function (wrapper,slider) {
         return function () {
+            clearInterval(slider.intervalProcess);
+            slider.intervalProcess = setInterval(rightClickCallback(wrapper, slider), slider.timeout);
+            //翻页开始动作
             adjustRight(wrapper, slider);
         }
     }
@@ -92,7 +125,8 @@
     }
 
 
-    window.slider =new slider();
-    //window.slider()
 
+    window.slider = slider;
 })(window);
+//创建一个slider
+var slideobj = new window.slider({ slideLeft: 'slideLeft', slideRight: "slideRight", backgroundSlider: "background-slider", timeout:10000 });

@@ -1,0 +1,66 @@
+查看存储库中的大文件
+git rev-list --objects --all | grep -E `git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -10 | awk '{print$1}' | sed ':a;N;$!ba;s/\n/|/g'`
+
+
+或
+
+git rev-list --objects --all | grep "$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -15 | awk '{print$1}')"
+
+
+
+
+
+重点在下面
+
+改写历史，去除大文件
+注意：下方命令中的 path/to/large/files 是大文件所在的路径，千万不要弄错！
+git clone git@github.com:jfinal/jfinal.git
+
+git filter-branch --tree-filter 'rm -f path/to/large/files' --tag-name-filter cat -- --all
+git push origin --tags --force
+git push origin --all --force
+
+
+重点在上面
+
+
+
+
+
+
+如果在 git filter-branch 操作过程中遇到如下提示，需要在 git filter-branch 后面加上参数 -f
+
+Cannot create a new backup.
+A previous backup already exists in refs/original/
+Force overwriting the backup with -f
+并告知所有组员，push 代码前需要 pull rebase，而不是 merge，否则会从该组员的本地仓库再次引入到远程库中，导致仓库在此被码云系统屏蔽。
+
+--------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+另外一种方法
+
+显示前5个最大文件的id
+
+$ git verify-pack -v .git/objects/pack/pack-*.idx | sort -k 3 -g | tail -5
+
+根据id查找文件位置
+
+$ git rev-list --objects --all | grep $文件id
+
+从git历史中删除文件
+
+$ git filter-branch --force --index-filter 'git rm -rf --cached --ignore-unmatch $文件名字' --prune-empty --tag-name-filter cat -- --all
+
+正式删除文件
+
+$ rm -rf .git/refs/original/
+$ git reflog expire --expire=now --all
+$ git gc --prune=now
+$ git gc --aggressive --prune=now
+# 如果这一步有权限不足的问题，需要手动到github上将master分支的保护去掉
+$ git push origin master --force
+# 清理远程仓库
+$ git remote prune origin
+
+
+原文链接：https://blog.csdn.net/yaoya_2015/java/article/details/97920380

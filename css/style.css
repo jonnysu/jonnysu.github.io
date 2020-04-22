@@ -7,13 +7,12 @@ body{
     box-sizing: inherit;
 }
 
-nav{
-    display:flex;
+nav {
+    display: flex;
+    background-color: #04040499;
     
-    background-color:black;
-    color:white;
-    justify-content:center;
-    
+    color: white;
+    justify-content: center;
 }
 nav div{
     padding:2em;
@@ -56,7 +55,7 @@ nav div{
         }
         #background-slider{
             display: block;
-            position: absolute;
+            position: fixed;
             height:100%;
             width:100%;
             z-index:-1;
@@ -71,6 +70,7 @@ nav div{
                 position: relative;
                 transition: none;
                 left: -100vw;
+                
             }
     #background-slider ul.activeleft {
         left: 0vw;
@@ -80,15 +80,25 @@ nav div{
         left: -200vw;
         transition: left 1s ease-in-out;
     }
-#background-slider li {
-    display: block;
-    float: left;
-    width: 100vw;
-    height: 100%;
-    list-style-type: none;
-    background-position: center;
-    background-size: cover;
-    background-color: #a7c5e4;
+            #background-slider li {
+                display: block;
+                float: left;
+                width: 100vw;
+                height: 100%;
+                list-style-type: none;
+                overflow:hidden;
+            }
+            #background-slider li div {
+                width: 100%;
+                height: 100%;
+                background-position: center;
+                background-size: 100%;
+                background-color: #a7c5e4;
+                animation: backgroundAnimation 25s ease-in-out infinite alternate
+            }
+@keyframes backgroundAnimation{
+    0% {transform:scale(1)}
+    100% {transform: scale(1.2)}
 }
 .sliderButton {
     position: absolute;
