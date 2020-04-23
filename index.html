@@ -31,11 +31,20 @@
 
 </head>
 <body>
+    <input id="changeColor-1-trigger" type="radio" checked name="changecolor" value="" />
+    <input id="changeColor-2-trigger" type="radio" name="changecolor" value="" />
+    <input id="changeColor-3-trigger" type="radio" name="changecolor" value="" />
     <header>
         <div id="home">
+            <label for="changeColor-1-trigger"></label>
+            <label for="changeColor-2-trigger"></label>
+            <label for="changeColor-3-trigger"></label>
             <div class="sliderButton" id="slideLeft"></div>
             <div class="sliderButton" id="slideRight"></div>
-            
+            <div id="homeContent">
+                <div class="title"> 我的介绍 听听</div>
+                <div class="content"> 我的介绍 听听</div>
+            </div>
         </div>
         <nav>
             <!--<div id="logo"></div>-->
@@ -47,8 +56,7 @@
     </header>
 
     <section id="home">
-        <div>someinfomation
-        
+        <div>
         </div>
     </section>
     <section id="experence"></section>
@@ -58,19 +66,23 @@
     <footer>
         Copyright © 2020  JonnySu All rights reserved
     </footer>
-<div id='background-slider'>
-    <ul>
+    <div id='background-slider'>
+        <ul>
 
-        <li>
-            <div style="background-image:url('https://hbimg.huabanimg.com/2bc3275b3c718be858b5fa63b5558f9ac4800883bea64-oxCzPr_fw658')"></div>
-        </li>
-        <li>
-            <div style="background-image:url('https://hbimg.huabanimg.com/df2fe4e110fcea5e3991cd7ce7dd1aa4fa3417133c62a-mL6UvX_fw658')"></div>
-        </li>
-        <li>
-            <div style="background-image:url('https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/daf7b174ed2d1cc8164d73026711c548f7de007c327ecd4021758a6de1c0f2a66675c662f4c439e60c7cb3d30da7b2b7?pictype=scale&from=30013&version=3.3.3.3&uin=79749563&fname=IMG_20180429_121208.jpg&size=750')"></div>
-        </li>
-    </ul>
-</div>
+            <li>
+                <div style="background-image:url('https://hbimg.huabanimg.com/d4af3dec0db767b9f39c974935598747ca59c60424ea8-0zpQHd_fw658')">
+                    <div class="title"> </div> <div class="content"></div>
+                </div>
+            </li>
+            <li>
+                <div style="background-image:url('https://hbimg.huabanimg.com/312778fc9264f21e9cd54c3173c7911e23bc735ab6739-a4Nr5w_fw658')">
+                </div>
+            </li>
+            <li>
+                <div style="background-image:url('https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/daf7b174ed2d1cc8164d73026711c548f7de007c327ecd4021758a6de1c0f2a66675c662f4c439e60c7cb3d30da7b2b7?pictype=scale&from=30013&version=3.3.3.3&uin=79749563&fname=IMG_20180429_121208.jpg&size=750')"></div>
+            </li>
+        </ul>
+    </div>
+</body>
 </html>
 <script src="./js/main.js"></script>

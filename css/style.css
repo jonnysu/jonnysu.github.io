@@ -6,16 +6,33 @@ body{
 *::after {
     box-sizing: inherit;
 }
+#home{
+    display:flex;
+    justify-content:center;
 
+}
+#home #homeContent{
+    position:absolute;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    flex-flow:column nowrap;
+}
+    #home #homeContent .title {
+      font-size:1.5em;
+      line-height:2em;
+    }
 nav {
     display: flex;
     background-color: #04040499;
-    
+    transition: background-color .65s ease-out;
     color: white;
     justify-content: center;
 }
     nav div {
-        padding: 2em 0.5em;
+        padding: 1em 0.5em;
         display: block;
         position: relative;
         display: flex;
@@ -23,23 +40,25 @@ nav {
         overflow: hidden;
         flex: auto;
         justify-content: center;
+        flex: 0 1 100px;
     }
-    nav div::after {
-        content: " ";
-        position: absolute;
-        transform: translateY(-100px);
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        opacity:0;
-        /*background-color: rgba(206, 206, 206, 0.15);*/
-        background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.25));
-        transition: all 0.2s cubic-bezier(.68,-0.55,.27,1.55);
-    }
+        nav div::after {
+            content: " ";
+            position: absolute;
+            transform: translateY(-100px);
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            /*background-color: rgba(206, 206, 206, 0.15);*/
+            background-image: linear-gradient(rgba(255, 255, 255, 0.31), rgba(255, 255, 255, 0.57));
+            transition: all 0.2s cubic-bezier(.68,-0.55,.27,1.55);
+        }
     nav div:hover::after {
         transform: translateY(0);
         opacity:1;
+        z-index:-1;
     }
     nav div:hover {
         color:#095eb7 ;
@@ -76,6 +95,67 @@ nav {
                 left: -100vw;
                 
             }
+
+footer {
+    background-color: #131313;
+    color: grey;
+    padding: 1em 0;
+    text-align: center;
+}
+
+/*变色处理*/
+input[name=changecolor] {
+ display:none;
+}
+label[for^="changeColor"] {
+    cursor: pointer;
+    padding: 0.3em;
+    background-color: rgba(255, 255, 255, 0.29);
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 1em;
+    margin-top: 1em;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+}
+label[for^="changeColor"]:after {
+    content:" ";
+    display:block;
+    width:1em;
+    height:1em;
+    border-radius:50%;
+    background-color:black;
+}
+    label[for^="changeColor"]:hover {
+        background-color:white;
+        transition:background-color 0.2s ease-in-out;
+    }
+label[for^="changeColor-1"]:after {
+    background-image: radial-gradient(#899dbfe8,#00173e60);
+}
+label[for^="changeColor-2"]:after {
+    background-image: radial-gradient(#db6969,#9f0000);
+}
+label[for^="changeColor-3"]:after {
+    background-image: radial-gradient(#46c34f,#03864f);
+}
+
+
+[id^="changeColor-1"]:checked ~ header nav {
+    background-color: #00173ee8;
+}
+[id^="changeColor-2"]:checked ~ header nav {
+    background-color: #370000e0;
+}
+[id^="changeColor-3"]:checked ~ header nav {
+    background-color: #002200e6;
+    
+}
+
+/*slider的css*/
+
     #background-slider ul.activeleft {
         left: 0vw;
         transition: left 1s ease-in-out;
@@ -92,14 +172,25 @@ nav {
                 list-style-type: none;
                 overflow:hidden;
             }
-            #background-slider li div {
+            #background-slider li>div {
                 width: 100%;
                 height: 100%;
                 background-position: center;
                 background-size: cover;
                 background-color: #a7c5e4;
-                animation: backgroundAnimation 25s ease-in-out infinite alternate
+                animation: backgroundAnimation 25s ease-in-out infinite alternate;
+                display:flex;
+                flex-direction:column;
+                justify-content:right;
+                align-items:end;
+                
             }
+                #background-slider li > div .title, #background-slider li > div .content {
+                    font-size: 2em;
+                    color: white;
+                    opacity: 0.8;
+                    margin: 2em;
+                }
 @keyframes backgroundAnimation{
     0% {transform:scale(1)}
     100% {transform: scale(1.2)}
@@ -109,7 +200,7 @@ nav {
     width: 50px;
     height: 50px;
     top: 50%;
-    margin-top: -100px;
+    margin-top: -25px;
     background-color: #ffffff00;
     border-radius: 50%;
     font-family: monospace;
@@ -146,9 +237,3 @@ nav {
         margin-left: 5px;
     }
 
-footer{
-    background-color:#131313;
-    color:grey;
-    padding:1em 0;
-    text-align: center;
-}
