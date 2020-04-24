@@ -5,7 +5,7 @@ body{
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+    box-sizing:border-box;
 }
 #home {
     display: flex;
@@ -186,6 +186,7 @@ nav div {
 @media (max-width: 767px) {
     .container {
     flex-wrap:wrap;
+    
     }
     .column-left, .column-right {
         width: 100%;
@@ -214,7 +215,7 @@ footer {
     text-align: center;
 }
 
-/*±äÉ«´¦Àí*/
+/*ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½*/
 #colorPanel {
     z-index: 1;
     padding: 0.25em 0.5em;
@@ -271,7 +272,7 @@ label[for^="changeColor-3"]:after {
     background-color: #002200e6;
 }
 
-/*sliderµÄcss*/
+/*sliderï¿½ï¿½css*/
 
     #background-slider ul.activeleft {
         left: 0vw;
