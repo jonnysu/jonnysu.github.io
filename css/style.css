@@ -6,10 +6,10 @@ body{
 *::after {
     box-sizing: inherit;
 }
-#home{
-    display:flex;
-    justify-content:center;
-
+#home {
+    display: flex;
+    justify-content: center;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255, 255, 255, 0) 5px, rgba(255, 255, 255, 0.05) 10px), repeating-linear-gradient(-45deg, transparent, transparent 5px, rgba(255, 255, 255, 0) 5px, rgba(255, 255, 255, 0.05) 10px);
 }
 #home #homeContent{
     position:absolute;
@@ -21,9 +21,32 @@ body{
     flex-flow:column nowrap;
 }
     #home #homeContent .title {
-      font-size:1.5em;
-      line-height:2em;
+        font-size: 1.5em;
+        line-height: 2em;
+        text-shadow: 0 0 10px #c06;
     }
+    #home #homeContent .content {
+        border: 1px solid white;
+        border-width: 1px 0;
+        padding: 0.5em;
+        box-shadow: 0px 5px 3px -3px rgba(0, 0, 0, 0.49);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-image: linear-gradient(#c3c3c3 20%,#7885a9 80%);
+    }
+.profile {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: solid 0.5em rgba(255,255,255,0.5);
+    background-size: 218px;
+    background-position-x: 0px;
+    background-position-y: -50px;
+    background-clip: padding-box;
+    margin-top:-50px;
+}
 nav {
     display: flex;
     background-color: #04040499;
@@ -104,6 +127,14 @@ footer {
 }
 
 /*变色处理*/
+#colorPanel {
+    z-index: 1;
+    padding: 0.25em 0.5em;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    background: rgba(255, 255, 255, 0.48);
+    height: 2em;
+}
 input[name=changecolor] {
  display:none;
 }
@@ -116,7 +147,6 @@ label[for^="changeColor"] {
     justify-content: center;
     align-items: center;
     height: 1em;
-    margin-top: 1em;
     margin-left: 0.1em;
     margin-right: 0.1em;
 }
@@ -133,7 +163,7 @@ label[for^="changeColor"]:after {
         transition:background-color 0.2s ease-in-out;
     }
 label[for^="changeColor-1"]:after {
-    background-image: radial-gradient(#899dbfe8,#00173e60);
+    background-image: radial-gradient(#899dbf,#00173e);
 }
 label[for^="changeColor-2"]:after {
     background-image: radial-gradient(#db6969,#9f0000);
@@ -143,15 +173,14 @@ label[for^="changeColor-3"]:after {
 }
 
 
-[id^="changeColor-1"]:checked ~ header nav {
-    background-color: #00173ee8;
+[id^="changeColor-1"]:checked ~ * nav {
+    background-color: rgba(0, 23, 62, 0.9098039215686274);
 }
-[id^="changeColor-2"]:checked ~ header nav {
-    background-color: #370000e0;
+[id^="changeColor-2"]:checked ~ * nav {
+    background-color: rgba(55, 0, 0, 0.8784313725490196);
 }
-[id^="changeColor-3"]:checked ~ header nav {
+[id^="changeColor-3"]:checked ~ * nav {
     background-color: #002200e6;
-    
 }
 
 /*slider的css*/
