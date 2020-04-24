@@ -1,5 +1,6 @@
 //created by jonnySu
 //调整网站home的高低
+
 (function (window) {
     var utility = {};
 
@@ -27,25 +28,25 @@
         //window.console.log(utility.clientHeight);
 
     })
+    //固定nav栏
+    var navObj = document.getElementsByTagName("nav")[0];
+    var navLine = document.getElementById("nav-line");
+    var value = 0;
+    window.addEventListener("scroll", function () {
+        value = navLine.getBoundingClientRect().top;
+      
+        if (value <= 0) {
+            navLine.style.height = navObj.offsetHeight + "px"
+            navObj.classList.add("navFixed")
+
+        } else {
+            navObj.classList.remove("navFixed")
+            navLine.style.height = 0;
+        }
+    })
 
 })(window);
 
-
-//window.requestAnimFrame = (function () {
-//    return window.requestAnimationFrame ||
-//        window.webkitRequestAnimationFrame ||
-//        window.mozRequestAnimationFrame ||
-//        window.oRequestAnimationFrame ||
-//        window.msRequestAnimationFrame ||
-//        function (/* function */ callback, /* DOMElement */ element) {
-//            window.setTimeout(callback, 1000 / 60);
-//        };
-//})();
-//function animate() {
-//    requestAnimFrame(animate);
-//    draw();
-
-//}
 
 
 
@@ -129,4 +130,21 @@
     window.slider = slider;
 })(window);
 //创建一个slider
-var slideobj = new window.slider({ slideLeft: 'slideLeft', slideRight: "slideRight", backgroundSlider: "background-slider", timeout:10000 });
+var slideobj = new window.slider({ slideLeft: 'slideLeft', slideRight: "slideRight", backgroundSlider: "background-slider", timeout: 10000 });
+
+
+//window.requestAnimFrame = (function () {
+//    return window.requestAnimationFrame ||
+//        window.webkitRequestAnimationFrame ||
+//        window.mozRequestAnimationFrame ||
+//        window.oRequestAnimationFrame ||
+//        window.msRequestAnimationFrame ||
+//        function (/* function */ callback, /* DOMElement */ element) {
+//            window.setTimeout(callback, 1000 / 60);
+//        };
+//})();
+//function animate() {
+//    requestAnimFrame(animate);
+//    draw();
+
+//}
