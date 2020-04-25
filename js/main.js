@@ -58,6 +58,10 @@
 
         this.leftButton = window.document.getElementById(ElementInfo.slideLeft);
         this.rightButton = window.document.getElementById(ElementInfo.slideRight);
+        //在添加两个按钮，特效需要
+        this.leftButton2 = window.document.getElementById(ElementInfo.slideLeft2);
+        this.rightButton2 = window.document.getElementById(ElementInfo.slideRight2);
+        //添加按钮结束
         this.slideWrapper = window.document.getElementById(ElementInfo.backgroundSlider).getElementsByTagName("ul");
        
         this.init();
@@ -80,7 +84,11 @@
         }
         this.leftButton.addEventListener("click", leftClickCallback(this.slideWrapper[0], this));
         this.rightButton.addEventListener("click", rightClickCallback(this.slideWrapper[0], this));
-        
+        //在添加两个按钮，特效需要
+        this.leftButton2.addEventListener("click", leftClickCallback(this.slideWrapper[0], this));
+        this.rightButton2.addEventListener("click", rightClickCallback(this.slideWrapper[0], this));
+        //添加按钮结束
+
         this.slideWrapper[0].addEventListener("transitionend", myevent(this.slideWrapper[0]));
         //设置时间间隔
         this.intervalProcess = setInterval(rightClickCallback(this.slideWrapper[0], this), this.timeout);
@@ -130,7 +138,7 @@
     window.slider = slider;
 })(window);
 //创建一个slider
-var slideobj = new window.slider({ slideLeft: 'slideLeft', slideRight: "slideRight", backgroundSlider: "background-slider", timeout: 10000 });
+var slideobj = new window.slider({ slideLeft: 'slideLeft', slideLeft2: 'slideLeft2', slideRight: "slideRight", slideRight2: "slideRight2",  backgroundSlider: "background-slider", timeout: 10000 });
 
 
 //window.requestAnimFrame = (function () {
