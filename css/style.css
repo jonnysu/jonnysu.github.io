@@ -303,6 +303,9 @@ nav div {
         width: 100%;
 
     }
+    .skill-item {
+        margin-left: -5em;
+    }
 }
 
 .column-content {
