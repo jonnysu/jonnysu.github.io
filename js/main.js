@@ -156,3 +156,54 @@ var slideobj = new window.slider({ slideLeft: 'slideLeft', slideLeft2: 'slideLef
 //    draw();
 
 //}
+
+(function (window) {
+    window.scrollBody = {}
+    function scrollAnimation(currentY, targetY) {
+        // 获取当前位置方法
+        // const currentY = document.documentElement.scrollTop || document.body.scrollTop
+
+        // 计算需要移动的距离
+
+        let needScrollTop = targetY - currentY
+        let _currentY = currentY
+        setTimeout(() => {
+            // 一次调用滑动帧数，每次调用会不一样
+            const dist = Math.ceil(needScrollTop / 10)
+            _currentY += dist
+            window.scrollTo(_currentY, currentY)
+            // 如果移动幅度小于十个像素，直接移动，否则递归调用，实现动画效果
+            if (needScrollTop > 10 || needScrollTop < -10) {
+                scrollAnimation(_currentY, targetY)
+            } else {
+                window.scrollTo(_currentY, targetY)
+            }
+        }, 1)
+    }
+    scrollBody.scroll = function (id) {
+        var targetY = window.document.getElementById(id).offsetTop-71;
+        var currentPOS = window.document.documentElement.scrollTop || window.document.body.scrollTop;
+        scrollAnimation(currentPOS, targetY);
+    }
+
+})(window)
+
+Array.from(window.document.getElementsByClassName("item"), function (item, index) {
+    item.addEventListener("click", function () {
+        return scrollBody.scroll(item.dataset.navinfo);
+    })
+    window.addEventListener("scroll", function () {
+        var obj = window.document.getElementById(item.dataset.navinfo)
+        var value = obj.getBoundingClientRect().top;
+        
+        if (value <= 71) {
+            item.classList.add("active")
+        } else {
+            item.classList.remove("active")
+        }
+    })
+
+})
+
+
+

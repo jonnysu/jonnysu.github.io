@@ -1,7 +1,8 @@
 body{
     margin:0;
     line-height:2.5em;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
 }
 *,
 *::before,
@@ -67,6 +68,14 @@ nav {
     justify-content: center;
     width:100%;
 }
+    nav a {
+        color:white;
+        text-decoration:none;
+    }
+    nav a:active {
+        color: black;
+       
+    }
 .navFixed {
     top:0;
     z-index:2;
@@ -101,9 +110,9 @@ nav div {
         opacity:1;
         z-index:-1;
     }
-    nav div:hover {
-        color:#095eb7 ;
-        transform:scaleY(1.1);
+    nav div:hover, nav div.active:nth-last-child(1) {
+        color: #095eb7;
+        transform: scaleY(1.1);
         transition: all 0.2s cubic-bezier(.68,-0.55,.27,1.55);
     }
 
@@ -473,6 +482,166 @@ label[for^="changeColor-3"]:after {
     }
 
     #paddingforslide{
-        padding:25vh;
+        padding:25vh 0;
         /*border-top:1px dotted white;*/
     }
+
+/*photocatagory*/
+.cata-buttons{
+    text-align:center;
+}
+.photocatagory {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.18);
+    padding: 0.8em;
+    margin: 0.5em;
+    display: inline-block;
+    border-radius: 0.3em;
+    line-height: 1em;
+    border: 2px solid transparent;
+}
+    .photocatagory[for=photos] {
+        background-color: rgba(0, 195, 255, 0.31);
+        
+    }
+    .photocatagory[for=food] {
+        background-color: rgba(255, 0, 0, 0.34);
+    }
+    .photocatagory[for=housedecor] {
+        background-color: rgba(0, 173, 80, 0.24);
+    }
+    .pop-pic {
+        transition: all 1s ease;
+    }
+#food:checked ~ :not(.cata-buttons):not(.catagory1),
+#housedecor:checked ~ :not(.cata-buttons):not(.catagory3),
+#photos:checked ~ :not(.cata-buttons):not(.catagory2) {
+    width:0;
+    height:0;
+    opacity: 0;
+}
+#all:checked ~ .cata-buttons .photocatagory.all,
+#photos:checked ~ .cata-buttons .photocatagory.photos,
+#food:checked ~ .cata-buttons .photocatagory.food,
+#housedecor:checked ~ .cata-buttons .photocatagory.housedecor {
+    border-color: gold;
+}
+/*pop picture out*/
+.poppic-wrapper {
+    margin: 2em 0;
+    width: 100%;
+}
+input[name=poppic], input[name=cataforpicture] {
+    display: none;
+}
+.pop-pic {
+    width: 50%;
+    height: 300px;
+    float: left;
+    position:relative;
+    overflow:hidden;
+    padding:0.3em;
+}
+    .pop-pic input ~ label.picture {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        cursor: pointer;
+       
+        /*transition: all 1s ease;*/
+    }
+    .pop-pic.catagory:before, .pop-pic.catagory:after {
+        display: block;
+        position: absolute;
+        content: attr(data-info);
+        right: 0;
+        bottom: -50%;
+        width: 80%;
+        height: 4em;
+        transition: all 0.2s ease;
+        color: white;
+        padding: 0.5em;
+        border-top-left-radius: 1em;
+    }
+    .pop-pic.catagory:after {
+        text-align:center;
+        content: attr(data-title);
+        left: 0;
+        bottom: -50%;
+        width: 20%;
+        height: 3em;
+        box-shadow: inset -11px 0px 19px -6px rgba(0, 0, 0, 0.51);
+        transition: all 0.5s ease;
+    }
+    /*美食*/
+    .pop-pic.catagory1:before {
+
+        background-color: rgba(251, 182, 182, 0.80);
+    }
+    .pop-pic.catagory1:after {
+        background-color: rgba(255, 0, 0, 0.80);
+        
+    }
+    /*摄影*/
+    .pop-pic.catagory2:before {
+        background-color: rgba(182, 251, 243, 0.80);
+    }
+
+    .pop-pic.catagory2:after {
+        background-color: rgba(0, 195, 255, 0.80);
+    }
+
+    /*家装*/
+    .pop-pic.catagory3:before {
+        background-color: rgba(140, 254, 176, 0.80);
+    }
+
+    .pop-pic.catagory3:after {
+        background-color: rgba(0, 122, 37, 0.80);
+    }
+
+
+
+
+    .pop-pic:hover:after,.pop-pic:hover:before {
+        bottom: 0%;
+    }
+
+.pop-pic input:checked ~ label {
+    display: block;
+    position: fixed;
+    top: 5vh;
+    left: 5vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: calc(90vh - 1em);
+    width: 90vw;
+    z-index: 100;
+    transition: height 1s ease;
+}
+
+        .pop-pic input:checked ~ .background {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            z-index: 99;
+            background-color: black;
+            color: white;
+            opacity: 0.8;
+            cursor: pointer;
+            
+        }
+            .pop-pic input:checked ~ .background:after {
+                content: "×";
+                display: block;
+                margin: 0 auto;
+                position: absolute;
+                bottom: 20px;
+                left: calc(50% - 0.5em);
+                font-size: 3em;
+            }

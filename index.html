@@ -53,10 +53,10 @@
         <div id="nav-line"></div>
         <nav>
             <!--<div id="logo"></div>-->
-            <div class="item">我是谁</div>
-            <div class="item">经验丰富</div>
-            <div class="item">爱好广泛</div>
-            <div class="item">欢迎微我</div>
+            <div class="item" data-navInfo="aboutme">我是谁</div>
+            <div class="item" data-navInfo="experence">经验丰富</div>
+            <div class="item" data-navInfo="hobby">爱好广泛</div>
+            <div class="item" data-navInfo="contact">欢迎微我</div>
         </nav>
     </header>
 
@@ -82,10 +82,10 @@
                         大和尚云：见山不是山，见水不是水
                     </div>
                 </div>
-             </div>
+            </div>
 
         </div>
-       
+
 
     </section>
     <section id="experence">
@@ -179,11 +179,54 @@
             </div>
         </div>
     </section>
-    <section id="hobby"></section>
-        摄影
-        喝茶
-        读书
-        休闲
+    <section id="hobby">
+
+        <div class="line-decoration2">
+            <div class="section-title">二货乐趣多</div>
+        </div>
+        <div class="backgroundColor section-decoration">
+            <div class="container">
+                <div class="poppic-wrapper">
+                    <!--分类-->
+                    <input id="all" checked type="radio" name="cataforpicture" value="" />
+                    <input id="photos" type="radio" name="cataforpicture" value="" />
+                    <input id="food" type="radio" name="cataforpicture" value="" />
+                    <input id="housedecor" type="radio" name="cataforpicture" value="" />
+                    <div class="cata-buttons">
+                        <label class="photocatagory all" for="all">所有图片</label>
+                        <label class="photocatagory photos" for="photos">摄影</label>
+                        <label class="photocatagory food" for="food">美食</label>
+                        <label class="photocatagory housedecor" for="housedecor">家装</label>
+                    </div>
+                    <!--可以点击放大图片-->
+                    <input id="dontshow" type="radio" name="poppic" value="" />
+
+                    <!--catagory1 美食  catagory2 摄影  catagory3 家装 -->
+
+                    <div class="pop-pic catagory catagory1" data-title="美食" data-info="我的最爱">
+                        <input id="pic1" type="radio" name="poppic" value="" />
+                        <label for="pic1" class="picture" style="background-image:url(https://hbimg.huabanimg.com/d48c1a7f5808a3e0815c8700b84f0b4c821ee5df3ec3f-jBqGkd_fw658)">
+                        </label>
+                        <label for="dontshow" class="background"></label>
+                    </div>
+                    <div class="pop-pic catagory catagory2" data-title="摄影" data-info="我的最爱">
+                        <input id="pic2" type="radio" name="poppic" value="" />
+                        <label for="pic2" class="picture" style="background-image:url(https://hbimg.huabanimg.com/7403aa6a85b9a83c968be9ad9d374b70b1a0d26cfbf7d-qbclHU_fw658)">
+                        </label>
+                        <label for="dontshow" class="background"></label>
+                    </div>
+                    <div class="pop-pic catagory catagory3" data-title="家装" data-info="这就是我家，自己设计，自己弄娃哈哈">
+                        <input id="pic2" type="radio" name="poppic" value="" />
+                        <label for="pic2" class="picture" style="background-image:url(https://hbimg.huabanimg.com/7403aa6a85b9a83c968be9ad9d374b70b1a0d26cfbf7d-qbclHU_fw658)">
+                        </label>
+                        <label for="dontshow" class="background"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
     <section id="contact">
         <div class="weixin"><img src="https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/99849b2f99613444cc246d487fb77be024236d3874cc2bdbff30499f92ff54154bf45b3c10b18b1c7a194521f35b8895?pictype=scale&from=30013&version=3.3.3.3&uin=79749563&fname=1704891281.jpg&size=750" alt="Alternate Text" /></div>
     </section>
@@ -214,6 +257,9 @@
             </li>
             <li>
                 <div style="background-image:url('https://hbimg.huabanimg.com/3e63466836b9506085baed0ba8edb62b232aad63d6a25-pVGhWQ_fw658')"></div>
+            </li>
+            <li>
+                <div style="background-image:url('https://hbimg.huabanimg.com/b6783dcb2673a24e2d458790cbbf6a2fa2b2f9f4c98f5-PvzQeM_fw658')"></div>
             </li>
             <li>
                 <div style="background-image:url('http://demo.qfpffmp.cn/cssthemes2/mstp_41_newlook/Light-Version/images/slider/8.jpg')"></div>
