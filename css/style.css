@@ -318,7 +318,7 @@ nav div {
         margin-left: -5em;
     }
     #slideLeft2, #slideRight2 {
-        margin-top:-8em;
+        margin-top:-25em;
     }
 }
 
@@ -402,7 +402,7 @@ label[for^="changeColor-3"]:after {
     background-color: rgba(55, 0, 0, 0.8784313725490196);
 }
 [id^="changeColor-3"]:checked ~ * nav {
-    background-color: #002200e6;
+    background-color:rgba(0, 34, 0, 0.9019607843137255);
 }
 
 /*slider��css*/
