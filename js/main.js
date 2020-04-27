@@ -186,24 +186,34 @@ var slideobj = new window.slider({ slideLeft: 'slideLeft', slideLeft2: 'slideLef
         scrollAnimation(currentPOS, targetY);
     }
 
+
+
+    var navindex = 0;
+    var list = window.document.getElementsByClassName("item")
+    Array.from(list, function (item, index) {
+        item.addEventListener("click", function () {
+            return scrollBody.scroll(item.dataset.navinfo);
+        })
+        window.addEventListener("scroll", function () {
+            var obj = window.document.getElementById(item.dataset.navinfo)
+            var value = obj.getBoundingClientRect().top;
+
+            if (value <= 71) {
+                navindex = index;
+                for (var i = 0; i <= navindex; i++) {
+                    list[i].classList.remove("active");
+                }
+                item.classList.add("active");
+
+            } else {
+                item.classList.remove("active")
+            }
+        })
+
+    })
+
 })(window)
 
-Array.from(window.document.getElementsByClassName("item"), function (item, index) {
-    item.addEventListener("click", function () {
-        return scrollBody.scroll(item.dataset.navinfo);
-    })
-    window.addEventListener("scroll", function () {
-        var obj = window.document.getElementById(item.dataset.navinfo)
-        var value = obj.getBoundingClientRect().top;
-        
-        if (value <= 71) {
-            item.classList.add("active")
-        } else {
-            item.classList.remove("active")
-        }
-    })
-
-})
-
+document.getElementsByTagName("audio")[0].volume = 0.5;
 
 
