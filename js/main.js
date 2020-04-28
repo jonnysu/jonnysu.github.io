@@ -188,30 +188,82 @@ var slideobj = new window.slider({ slideLeft: 'slideLeft', slideLeft2: 'slideLef
 
 
 
-    var navindex = 0;
+    //var navindex = 0;
+    //var list = window.document.getElementsByClassName("item")
+    //Array.from(list, function (item, index) {
+    //    item.addEventListener("click", function () {
+    //        return scrollBody.scroll(item.dataset.navinfo);
+    //    })
+    //    window.addEventListener("scroll", function () {
+    //        var obj = window.document.getElementById(item.dataset.navinfo)
+    //        var value = obj.getBoundingClientRect().top;
+
+    //        if (value <= 71) {
+    //            navindex = index;
+    //            for (var i = 0; i <= navindex; i++) {
+    //                list[i].classList.remove("active");
+    //            }
+    //            item.classList.add("active");
+
+    //        } else {
+    //            item.classList.remove("active")
+    //        }
+    //    })
+
+    //})
+
+   //获取nav里的item列表
     var list = window.document.getElementsByClassName("item")
+    //点击的时候滚动到该位置
     Array.from(list, function (item, index) {
         item.addEventListener("click", function () {
             return scrollBody.scroll(item.dataset.navinfo);
         })
-        window.addEventListener("scroll", function () {
-            var obj = window.document.getElementById(item.dataset.navinfo)
-            var value = obj.getBoundingClientRect().top;
+       
 
-            if (value <= 71) {
-                navindex = index;
-                for (var i = 0; i <= navindex; i++) {
-                    list[i].classList.remove("active");
-                }
-                item.classList.add("active");
-
-            } else {
-                item.classList.remove("active")
+    })
+    //获取每一块内容的实例
+    var elementList=Array.from(list, function (item, index) {
+       return window.document.getElementById(item.dataset.navinfo)
+    })
+    var elementListPositions = new Array(list.length);
+    var prevousElementListPositions = new Array(list.length);
+    var subvalue = new Array(list.length).fill(0);
+    var actValue = new Array(list.length).fill(0);
+    window.addEventListener("scroll", function () {
+        elementList.forEach(function (value, index, array) {
+            prevousElementListPositions = elementListPositions.slice();
+            elementListPositions[index] = value.getBoundingClientRect().top - 71;
+            elementListPositions.forEach(function (value, index) {
+                if (value <= 0 && prevousElementListPositions[index] >= 0) { subvalue[index] = 1; }
+                else if (value >= 0 && prevousElementListPositions[index] <= 0) { subvalue[index] = -1; }
+                else { subvalue[index] = 0 }
+                
+            })
+            var bool = subvalue.some(function (subvalueitem) {
+               return  subvalueitem == 1 || subvalueitem == -1
+            });
+            if (bool) {
+                
+                subvalue.forEach(function (value, index) {
+                    if (value == 1) {
+                        list[index].classList.add("active")
+                    } else if (value == -1&&index>0) {
+                        list[index - 1].classList.add("active")
+                        list[index].classList.remove("active")
+                    } else {
+                        list[index].classList.remove("active")
+                    }
+                })
             }
+          
         })
+
+
 
     })
 
+  
 })(window)
 
 document.getElementsByTagName("audio")[0].volume = 0.5;

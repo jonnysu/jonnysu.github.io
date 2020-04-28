@@ -205,7 +205,7 @@ nav div {
                 
                 margin:0 auto;
                 display:flex;
-                
+                overflow:hidden;
             }
             .column-left,.column-right{
                 width:50%;
@@ -546,8 +546,8 @@ label[for^="changeColor-3"]:after {
 }
 /*pop picture out*/
 .poppic-wrapper {
-    margin: 2em 0;
-    width: 100%;
+    margin: 2em -0.3em;
+    width:calc(100% + 0.6em)
 }
 input[name=poppic], input[name=cataforpicture] {
     display: none;
@@ -573,9 +573,9 @@ input[name=poppic], input[name=cataforpicture] {
         display: block;
         position: absolute;
         content: attr(data-info);
-        right: 0;
+        right: 0.3em;
         bottom: -50%;
-        width: 80%;
+        width: calc(80% - 0.3em);
         height: 4em;
         transition: all 0.2s ease;
         color: white;
@@ -583,11 +583,11 @@ input[name=poppic], input[name=cataforpicture] {
         border-top-left-radius: 1em;
     }
     .pop-pic.catagory:after {
-        text-align:center;
+        text-align: center;
         content: attr(data-title);
-        left: 0;
+        left: 0.3em;
         bottom: -50%;
-        width: 20%;
+        width: calc(20% - 0.3em);
         height: 3em;
         box-shadow: inset -11px 0px 19px -6px rgba(0, 0, 0, 0.51);
         transition: all 0.5s ease;
@@ -630,7 +630,7 @@ input[name=poppic], input[name=cataforpicture] {
 
 
     .pop-pic:hover:after,.pop-pic:hover:before {
-        bottom: 0%;
+        bottom: 0.3em;
     }
 
 .pop-pic input:checked ~ label {
