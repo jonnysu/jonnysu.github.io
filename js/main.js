@@ -257,6 +257,11 @@ var slideobj = new window.slider({ slideLeft: 'slideLeft', slideLeft2: 'slideLef
 
     //console.log()
     var audio = window.document.getElementsByTagName("audio")[0];
+    audio.addEventListener('ended', function () {
+        audio.src = window.musics[getRndInteger(0, window.musics.length)][0];
+        audio.title = window.musics[getRndInteger(0, window.musics.length)][1];
+        audio.play();
+    });
     audio.src = window.musics[getRndInteger(0, window.musics.length)][0];
     audio.title = window.musics[getRndInteger(0, window.musics.length)][1];
     audio.volume = 0.5;
