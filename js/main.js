@@ -1,5 +1,5 @@
 //created by jonnySu
-//µ÷ÕûÍøÕ¾homeµÄ¸ßµÍ
+//è°ƒæ•´ç½‘ç«™homeçš„é«˜ä½
 
 (function (window) {
     var utility = {};
@@ -21,14 +21,14 @@
     }
     adjustHeader();
 
-    //µ÷ÕûÒ³Ãæ´óĞ¡ÊÇ¸Ä±ä
+    //è°ƒæ•´é¡µé¢å¤§å°æ˜¯æ”¹å˜
     window.addEventListener("resize", function () {
         utility.clientHeight = document.documentElement.clientHeight;
         adjustHeader();
         //window.console.log(utility.clientHeight);
 
     })
-    //¹Ì¶¨navÀ¸
+    //å›ºå®šnavæ 
     var navObj = document.getElementsByTagName("nav")[0];
     var navLine = document.getElementById("nav-line");
     var value = 0;
@@ -50,7 +50,7 @@
 
 
 
-//ĞÂĞ¬Ò»¸ö¶à¹¦ÄÜslider Öğ½¥Ìí¼ÓÖĞ
+//æ–°é‹ä¸€ä¸ªå¤šåŠŸèƒ½slider é€æ¸æ·»åŠ ä¸­
 (function (window) {
     var slider = function (ElementInfo) {
         
@@ -58,10 +58,10 @@
 
         this.leftButton = window.document.getElementById(ElementInfo.slideLeft);
         this.rightButton = window.document.getElementById(ElementInfo.slideRight);
-        //ÔÚÌí¼ÓÁ½¸ö°´Å¥£¬ÌØĞ§ĞèÒª
+        //åœ¨æ·»åŠ ä¸¤ä¸ªæŒ‰é’®ï¼Œç‰¹æ•ˆéœ€è¦
         this.leftButton2 = window.document.getElementById(ElementInfo.slideLeft2);
         this.rightButton2 = window.document.getElementById(ElementInfo.slideRight2);
-        //Ìí¼Ó°´Å¥½áÊø
+        //æ·»åŠ æŒ‰é’®ç»“æŸ
         this.slideWrapper = window.document.getElementById(ElementInfo.backgroundSlider).getElementsByTagName("ul");
        
         this.init();
@@ -71,12 +71,12 @@
         this.slideElements = this.slideWrapper[0].children;
         this.length = this.slideElements.length;
         this.slideWrapper[0].style.width = 100 * this.length + "vw";
-        //Ò»ÕÅµÄÌØÊâÇé¿ö
+        //ä¸€å¼ çš„ç‰¹æ®Šæƒ…å†µ
         if (this.length == 1) {
             this.slideWrapper[0].style.left = 0;
             return;
         }
-        //Á½ÕÅµÄÌØÊâÇé¿ö
+        //ä¸¤å¼ çš„ç‰¹æ®Šæƒ…å†µ
         if (this.length == 2) {
             this.slideWrapper[0].appendChild(this.slideWrapper[0].firstElementChild.cloneNode(true)); 
             this.slideWrapper[0].appendChild(this.slideWrapper[0].firstElementChild.nextElementSibling.cloneNode(true));
@@ -84,21 +84,21 @@
         }
         this.leftButton.addEventListener("click", leftClickCallback(this.slideWrapper[0], this));
         this.rightButton.addEventListener("click", rightClickCallback(this.slideWrapper[0], this));
-        //ÔÚÌí¼ÓÁ½¸ö°´Å¥£¬ÌØĞ§ĞèÒª
+        //åœ¨æ·»åŠ ä¸¤ä¸ªæŒ‰é’®ï¼Œç‰¹æ•ˆéœ€è¦
         this.leftButton2.addEventListener("click", leftClickCallback(this.slideWrapper[0], this));
         this.rightButton2.addEventListener("click", rightClickCallback(this.slideWrapper[0], this));
-        //Ìí¼Ó°´Å¥½áÊø
+        //æ·»åŠ æŒ‰é’®ç»“æŸ
 
         this.slideWrapper[0].addEventListener("transitionend", myevent(this.slideWrapper[0]));
-        //ÉèÖÃÊ±¼ä¼ä¸ô
+        //è®¾ç½®æ—¶é—´é—´éš”
         this.intervalProcess = setInterval(rightClickCallback(this.slideWrapper[0], this), this.timeout);
     }
     var leftClickCallback = function (wrapper,slider) {
         return function () {
-            //ÖØÉèÊ±¼ä¼ä¸ô
+            //é‡è®¾æ—¶é—´é—´éš”
             clearInterval(slider.intervalProcess);
             slider.intervalProcess = setInterval(rightClickCallback(wrapper, slider), slider.timeout);
-            //·­Ò³¿ªÊ¼¶¯×÷
+            //ç¿»é¡µå¼€å§‹åŠ¨ä½œ
             adjustLeft(wrapper,slider);
         }
     }
@@ -106,7 +106,7 @@
         return function () {
             clearInterval(slider.intervalProcess);
             slider.intervalProcess = setInterval(rightClickCallback(wrapper, slider), slider.timeout);
-            //·­Ò³¿ªÊ¼¶¯×÷
+            //ç¿»é¡µå¼€å§‹åŠ¨ä½œ
             adjustRight(wrapper, slider);
         }
     }
@@ -137,7 +137,7 @@
 
     window.slider = slider;
 })(window);
-//´´½¨Ò»¸öslider
+//åˆ›å»ºä¸€ä¸ªslider
 var slideobj = new window.slider({ slideLeft: 'slideLeft', slideLeft2: 'slideLeft2', slideRight: "slideRight", slideRight2: "slideRight2",  backgroundSlider: "background-slider", timeout: 10000 });
 
 
@@ -160,19 +160,19 @@ var slideobj = new window.slider({ slideLeft: 'slideLeft', slideLeft2: 'slideLef
 (function (window) {
     window.scrollBody = {}
     function scrollAnimation(currentY, targetY) {
-        // »ñÈ¡µ±Ç°Î»ÖÃ·½·¨
+        // è·å–å½“å‰ä½ç½®æ–¹æ³•
         // const currentY = document.documentElement.scrollTop || document.body.scrollTop
 
-        // ¼ÆËãĞèÒªÒÆ¶¯µÄ¾àÀë
+        // è®¡ç®—éœ€è¦ç§»åŠ¨çš„è·ç¦»
 
         let needScrollTop = targetY - currentY
         let _currentY = currentY
         setTimeout(() => {
-            // Ò»´Îµ÷ÓÃ»¬¶¯Ö¡Êı£¬Ã¿´Îµ÷ÓÃ»á²»Ò»Ñù
+            // ä¸€æ¬¡è°ƒç”¨æ»‘åŠ¨å¸§æ•°ï¼Œæ¯æ¬¡è°ƒç”¨ä¼šä¸ä¸€æ ·
             const dist = Math.ceil(needScrollTop / 10)
             _currentY += dist
             window.scrollTo(_currentY, currentY)
-            // Èç¹ûÒÆ¶¯·ù¶ÈĞ¡ÓÚÊ®¸öÏñËØ£¬Ö±½ÓÒÆ¶¯£¬·ñÔòµİ¹éµ÷ÓÃ£¬ÊµÏÖ¶¯»­Ğ§¹û
+            // å¦‚æœç§»åŠ¨å¹…åº¦å°äºåä¸ªåƒç´ ï¼Œç›´æ¥ç§»åŠ¨ï¼Œå¦åˆ™é€’å½’è°ƒç”¨ï¼Œå®ç°åŠ¨ç”»æ•ˆæœ
             if (needScrollTop > 10 || needScrollTop < -10) {
                 scrollAnimation(_currentY, targetY)
             } else {
@@ -181,50 +181,25 @@ var slideobj = new window.slider({ slideLeft: 'slideLeft', slideLeft2: 'slideLef
         }, 1)
     }
     scrollBody.scroll = function (id) {
-        var targetY = window.document.getElementById(id).offsetTop-71;
+        var targetY = window.document.getElementById(id).offsetTop - 71;
         var currentPOS = window.document.documentElement.scrollTop || window.document.body.scrollTop;
         scrollAnimation(currentPOS, targetY);
     }
 
 
-
-    //var navindex = 0;
-    //var list = window.document.getElementsByClassName("item")
-    //Array.from(list, function (item, index) {
-    //    item.addEventListener("click", function () {
-    //        return scrollBody.scroll(item.dataset.navinfo);
-    //    })
-    //    window.addEventListener("scroll", function () {
-    //        var obj = window.document.getElementById(item.dataset.navinfo)
-    //        var value = obj.getBoundingClientRect().top;
-
-    //        if (value <= 71) {
-    //            navindex = index;
-    //            for (var i = 0; i <= navindex; i++) {
-    //                list[i].classList.remove("active");
-    //            }
-    //            item.classList.add("active");
-
-    //        } else {
-    //            item.classList.remove("active")
-    //        }
-    //    })
-
-    //})
-
-   //»ñÈ¡navÀïµÄitemÁĞ±í
+    //è·å–navé‡Œçš„itemåˆ—è¡¨
     var list = window.document.getElementsByClassName("item")
-    //µã»÷µÄÊ±ºò¹ö¶¯µ½¸ÃÎ»ÖÃ
+    //ç‚¹å‡»çš„æ—¶å€™æ»šåŠ¨åˆ°è¯¥ä½ç½®
     Array.from(list, function (item, index) {
         item.addEventListener("click", function () {
             return scrollBody.scroll(item.dataset.navinfo);
         })
-       
+
 
     })
-    //»ñÈ¡Ã¿Ò»¿éÄÚÈİµÄÊµÀı
-    var elementList=Array.from(list, function (item, index) {
-       return window.document.getElementById(item.dataset.navinfo)
+    //è·å–æ¯ä¸€å—å†…å®¹çš„å®ä¾‹
+    var elementList = Array.from(list, function (item, index) {
+        return window.document.getElementById(item.dataset.navinfo)
     })
     var elementListPositions = new Array(list.length);
     var prevousElementListPositions = new Array(list.length);
@@ -238,17 +213,17 @@ var slideobj = new window.slider({ slideLeft: 'slideLeft', slideLeft2: 'slideLef
                 if (value <= 0 && prevousElementListPositions[index] >= 0) { subvalue[index] = 1; }
                 else if (value >= 0 && prevousElementListPositions[index] <= 0) { subvalue[index] = -1; }
                 else { subvalue[index] = 0 }
-                
+
             })
             var bool = subvalue.some(function (subvalueitem) {
-               return  subvalueitem == 1 || subvalueitem == -1
+                return subvalueitem == 1 || subvalueitem == -1
             });
             if (bool) {
-                
+
                 subvalue.forEach(function (value, index) {
                     if (value == 1) {
                         list[index].classList.add("active")
-                    } else if (value == -1&&index>0) {
+                    } else if (value == -1 && index > 0) {
                         list[index - 1].classList.add("active")
                         list[index].classList.remove("active")
                     } else {
@@ -256,16 +231,41 @@ var slideobj = new window.slider({ slideLeft: 'slideLeft', slideLeft2: 'slideLef
                     }
                 })
             }
-          
+
         })
 
 
 
     })
 
-  
-})(window)
 
-document.getElementsByTagName("audio")[0].volume = 0.5;
+})(window);
+    //éšæœºæ’­æ”¾æ­Œæ›²
+
+
+(function (window) {
+    window.musics = [
+        ["http://96.ierge.cn/14/215/430728.mp3","è€€çœ¼-å¤å©‰å®‰"],
+        ["http://96.ierge.cn/14/221/442626.mp3","è™šåº¦åŠç”Ÿ"],
+        ["http://96.ierge.cn/13/201/402133.mp3","çˆ±ç–¯çš„æˆ‘"],
+        ["http://96.ierge.cn/14/220/440580.mp3","æˆ‘åªæƒ³åšçœŸçš„è‡ªå·±"],
+        ["http://96.ierge.cn/13/195/390762.mp3","Say Goodbye"]
+    ];
+    function getRndInteger(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    };
+
+    //console.log()
+    var audio = window.document.getElementsByTagName("audio")[0];
+    audio.src = window.musics[getRndInteger(0, window.musics.length)][0];
+    audio.title = window.musics[getRndInteger(0, window.musics.length)][1];
+    audio.volume = 0.5;
+
+})(window);
+
+
+
+
+
 
 
