@@ -581,6 +581,7 @@ input[name=poppic], input[name=cataforpicture] {
         color: white;
         padding: 0.5em;
         border-top-left-radius: 1em;
+        text-align:center;
     }
     .pop-pic.catagory:after {
         text-align: center;
