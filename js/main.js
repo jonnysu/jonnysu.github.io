@@ -138,9 +138,86 @@
     window.slider = slider;
 })(window);
 //创建一个slider
-var slideobj = new window.slider({ slideLeft: 'slideLeft', slideLeft2: 'slideLeft2', slideRight: "slideRight", slideRight2: "slideRight2",  backgroundSlider: "background-slider", timeout: 10000 });
+//var slideobj = new window.slider({ slideLeft: 'slideLeft', slideLeft2: 'slideLeft2', slideRight: "slideRight", slideRight2: "slideRight2",  backgroundSlider: "background-slider", timeout: 10000 });
+
+//vue 的使用
+(function (window) {
+    var vmbackground = new Vue({
+        el: "#background-slider",
+        data() {
+            
+            return {
+                backgroundimgs: null
+            }
+        },
+        watch: {
+            backgroundimgs: function () {
+               // nextTich: 在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。
+               //$nextTick 里面DOM更新是指页面上的数据是最新的数据。而不是data的a数据更新了。
+                this.$nextTick(function () {
+                /*现在数据已经渲染完毕*/
+                    var slideobj = new window.slider({ slideLeft: 'slideLeft', slideLeft2: 'slideLeft2', slideRight: "slideRight", slideRight2: "slideRight2", backgroundSlider: "background-slider", timeout: 10000 });
+                })
+            }
+        },
+        mounted() {
+
+                axios
+                    .get('/content/content.json')
+                    .then(response => {
+                    this.backgroundimgs = response.data.backgroundimgs;
+                        
+                    })
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+            
+
+            }
+        
+    });
 
 
+
+    var vmhobbie= new Vue({
+        el: "#myhobby",
+        data() {
+
+            return {
+               
+                hobbies:null
+            }
+        },
+        watch: {
+            hobbies: function () {
+                // nextTich: 在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。
+                //$nextTick 里面DOM更新是指页面上的数据是最新的数据。而不是data的a数据更新了。
+                this.$nextTick(function () {
+                    /*现在数据已经渲染完毕*/
+                    console.log(this.hobbies)
+                })
+            }
+        },
+        mounted() {
+
+            axios
+                .get('/content/content.json')
+                .then(response => {
+                    this.hobbies= response.data.hobbies;
+                    
+
+                })
+                .catch(function (error) { // 请求失败处理
+                    console.log(error);
+                });
+
+
+        }
+
+    });
+
+
+})(window);
 //window.requestAnimFrame = (function () {
 //    return window.requestAnimationFrame ||
 //        window.webkitRequestAnimationFrame ||
@@ -267,8 +344,6 @@ var slideobj = new window.slider({ slideLeft: 'slideLeft', slideLeft2: 'slideLef
     audio.volume = 0.5;
 
 })(window);
-
-
 
 
 
