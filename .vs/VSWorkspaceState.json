@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\content",
+    "\\css",
+    "\\img",
     "\\js"
   ],
-  "SelectedNode": "\\js\\axios.min.js",
+  "SelectedNode": "\\js\\main.js",
   "PreviewInSolutionExplorer": false
 }
