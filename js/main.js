@@ -194,7 +194,7 @@
                 //$nextTick 里面DOM更新是指页面上的数据是最新的数据。而不是data的a数据更新了。
                 this.$nextTick(function () {
                     /*现在数据已经渲染完毕*/
-                    console.log(this.hobbies)
+                    //console.log(this.hobbies)
                 })
             }
         },
@@ -346,6 +346,18 @@
 })(window);
 
 
+//console输出我的信息
+const baseStyle = [
+    'color:green',
+    'padding: 2em 0',
+    'font-size:1.2em',
+    'font-family:yahei',
+    'text-shadow: 1px 1px 2px grey'
+];
 
 
+const leftstyle = baseStyle.concat([""]);
+const rightstyle=baseStyle.concat(["color:red"]);
+
+console.log("%c联系我请发送Email至%cashcn2001@qq.com", leftstyle.join(";"), rightstyle.join(";"))
 
