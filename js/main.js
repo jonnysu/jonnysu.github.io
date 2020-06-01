@@ -326,7 +326,9 @@
         ["http://96.ierge.cn/14/221/442626.mp3","虚度半生"],
         ["http://96.ierge.cn/13/201/402133.mp3","爱疯的我"],
         ["http://96.ierge.cn/14/220/440580.mp3","我只想做真的自己"],
-        ["http://96.ierge.cn/13/195/390762.mp3","Say Goodbye"]
+        ["http://96.ierge.cn/13/195/390762.mp3", "Say Goodbye"],
+
+        ["http://m701.music.126.net/20200601121843/fa795fdbbd577bf03048256658fb7b30/jdyyaac/065b/0e58/0f5e/11f08645ab924ead14dd8435b4038abd.m4a", "修仙缘"]
     ];
     function getRndInteger(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
@@ -335,12 +337,14 @@
     //console.log()
     var audio = window.document.getElementsByTagName("audio")[0];
     audio.addEventListener('ended', function () {
-        audio.src = window.musics[getRndInteger(0, window.musics.length)][0];
-        audio.title = window.musics[getRndInteger(0, window.musics.length)][1];
+       var music= getRndInteger(0, window.musics.length)
+        audio.src = window.musics[music][0];
+        audio.title = window.musics[music][1];
         audio.play();
     });
-    audio.src = window.musics[getRndInteger(0, window.musics.length)][0];
-    audio.title = window.musics[getRndInteger(0, window.musics.length)][1];
+    var musicroot = getRndInteger(0, window.musics.length)
+    audio.src = window.musics[musicroot][0];
+    audio.title = window.musics[musicroot][1];
     audio.volume = 0.5;
 
 })(window);
