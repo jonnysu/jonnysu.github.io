@@ -322,11 +322,7 @@
 
 (function (window) {
     window.musics = [
-        ["http://96.ierge.cn/14/215/430728.mp3","耀眼-夏婉安"],
-        ["http://96.ierge.cn/14/221/442626.mp3","虚度半生"],
-        ["http://96.ierge.cn/13/201/402133.mp3","爱疯的我"],
         ["http://96.ierge.cn/14/220/440580.mp3","我只想做真的自己"],
-        ["http://96.ierge.cn/13/195/390762.mp3", "Say Goodbye"],
         ["https://img.tukuppt.com/newpreview_music/09/00/49/5c892c894b85047500.mp3", "故事的开始"]
     ];
     function getRndInteger(min, max) {
